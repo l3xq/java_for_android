@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<instant-run
+    abi="x86_64"
+    api-level="22"
+    density="420dpi"
+    format="7"
+    timestamp="72223207424013"
+    token="-8244197502676438355" >
+
+    <task
+        name="javac"
+        duration="440" />
+    <task
+        name="instant-run-dex"
+        duration="0" />
+    <task
+        name="instant-run-transform"
+        duration="583" />
+    <task
+        name="verifier"
+        duration="345" />
+
+    <artifact
+        location="C:\Users\aleks\Downloads\_62aad97bbb5d039d71e28be6eccd1667_m7-assignment-buildings-skeleton\app\build\outputs\apk\app-debug.apk"
+        type="MAIN" />
+
+    <build timestamp="72223207424013" >
+        <artifact
+            location="C:\Users\aleks\Downloads\_62aad97bbb5d039d71e28be6eccd1667_m7-assignment-buildings-skeleton\app\build\outputs\apk\app-debug.apk"
+            type="MAIN" />
+    </build>
+
+</instant-run>

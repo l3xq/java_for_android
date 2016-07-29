@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "C:\\Users\\aleks\\Downloads\\java-for-android\\assignments\\m8-assignment-calculator-skeleton\\app\\build\\intermediates\\res\\merged\\debug\\color-v11\\abc_background_cache_hint_selector_material_light.xml",
+        "source": "C:\\Users\\aleks\\Downloads\\java-for-android\\assignments\\m8-assignment-calculator-skeleton\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\color-v11\\abc_background_cache_hint_selector_material_light.xml"
+    },
+    {
+        "merged": "C:\\Users\\aleks\\Downloads\\java-for-android\\assignments\\m8-assignment-calculator-skeleton\\app\\build\\intermediates\\res\\merged\\debug\\color-v11\\abc_background_cache_hint_selector_material_dark.xml",
+        "source": "C:\\Users\\aleks\\Downloads\\java-for-android\\assignments\\m8-assignment-calculator-skeleton\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\color-v11\\abc_background_cache_hint_selector_material_dark.xml"
+    },
+    {
+        "merged": "C:\\Users\\aleks\\Downloads\\_0e9741512e1fc0f728545d0aad49e50b_m8-assignment-calculator-skeleton\\app\\build\\intermediates\\res\\merged\\debug\\color-v11\\abc_background_cache_hint_selector_material_dark.xml",
+        "source": "C:\\Users\\aleks\\Downloads\\_0e9741512e1fc0f728545d0aad49e50b_m8-assignment-calculator-skeleton\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\color-v11\\abc_background_cache_hint_selector_material_dark.xml"
+    },
+    {
+        "merged": "C:\\Users\\aleks\\Downloads\\_0e9741512e1fc0f728545d0aad49e50b_m8-assignment-calculator-skeleton\\app\\build\\intermediates\\res\\merged\\debug\\color-v11\\abc_background_cache_hint_selector_material_light.xml",
+        "source": "C:\\Users\\aleks\\Downloads\\_0e9741512e1fc0f728545d0aad49e50b_m8-assignment-calculator-skeleton\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.1\\res\\color-v11\\abc_background_cache_hint_selector_material_light.xml"
+    }
+]
