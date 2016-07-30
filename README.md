@@ -6,3 +6,5 @@ These are assignments for Coursera course on Android Development provided by Van
 
 ## https://www.coursera.org/learn/java-for-android/home/welcome
   
+  
+  If I made any mistakes, feel free to notify me.
