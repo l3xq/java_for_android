@@ -1,7 +1,7 @@
 # Java for Android
 
 
-These are assignments for Coursera course on Android Development provided by Vanderbilt University.
+These are assignments I did on Coursera course 'Android App Development'.
 
 
 ## https://www.coursera.org/learn/java-for-android/home/welcome
