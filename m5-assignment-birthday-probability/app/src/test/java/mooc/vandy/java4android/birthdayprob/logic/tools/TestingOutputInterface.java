@@ -42,7 +42,7 @@ public class TestingOutputInterface  implements OutputInterface{
 
     @Override
     public void print(char _char) {
-        output += _char;
+		print("" + _char);
     }
 
     @Override
@@ -52,7 +52,7 @@ public class TestingOutputInterface  implements OutputInterface{
 
     @Override
     public void println(char _char) {
-        output += _char + '\n';
+		println("" + _char);
     }
 
     @Override

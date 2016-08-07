@@ -1,27 +1,57 @@
 package mooc.vandy.java4android.birthdayprob.ui;
 
 /**
- * Ignore this Interface for now. It defines the methods that the User Interface [MainActivity]
- * will implement. Interfaces will be covered later in this course.
+ * Define the methods that the User Interface [MainActivity] will
+ * implement. Ignore this interface for now - they will be covered
+ * later in this course.
  */
 public interface OutputInterface {
+    /**
+     * Get Size value from displayed UI.
+     */
+    int getSize();
 
-    public int getSize();
+    /**
+     * Get Count value from displayed UI.
+     */
+    int getCount();
 
-    public int getCount();
+    /**
+     * This prints to the output a string
+     * @param text
+     */
+    void print(String text);
 
-    public void print(String text);
+    /**
+     * This prints to the output a char
+     * @param _char
+     */
+    void print(char _char);
 
-    public void print(char _char);
+    /**
+     * This prints to the screen a string then a new line
+     * @param text
+     */
+    void println(String text);
 
-    public void println(String text);
+    /**
+     * This prints to the screen a char then a new line
+     * @param _char
+     */
+    void println(char _char);
 
-    public void println(char _char);
+    /**
+     * Reset the on-screen output (EditText box)
+     */
+    void resetText();
 
-    public void resetText();
+    /**
+     * Make Log statements from Logic
+     */
+    void log(String logtext);
 
-    public void log(String logtext);
-
-    public void makeAlertToast(String alertText);
-
+    /**
+     * Make a Toast from Logic
+     */
+    void makeAlertToast(String alertText);
 }

@@ -15,19 +15,39 @@ import mooc.vandy.java4android.birthdayprob.logic.LogicInterface;
 /**
  * Main UI for the App.
  */
-public class MainActivity extends AppCompatActivity implements OutputInterface {
+public class MainActivity 
+       extends AppCompatActivity 
+       implements OutputInterface {
+    /**
+     * String for LOGGING.
+     */
+    public final static String LOG_TAG =
+        MainActivity.class.getCanonicalName();
 
-    // String for LOGGING
-    public final static String LOG_TAG = MainActivity.class.getCanonicalName();
+    /**
+     * Logic Instance.
+     */
+    private LogicInterface mLogic;
 
-    // Logic Instance.
-    LogicInterface mLogic;
+    /**
+     * EditText that stores the output.
+     */
+    private EditText mOutput;
 
-    // UI Components.
-    EditText outputET;
-    EditText sizeET;
-    EditText countET;
-    Button processButton;
+    /**
+     * EditText that stores the size.
+     */
+    private EditText mSize;
+
+    /**
+     * EditText that stores the count.
+     */
+    private EditText mCount;
+
+    /**
+     * Button the user presses to perform the computation.
+     */
+    private Button mProcessButton;
 
     /**
      * Called when the activity is starting.
@@ -39,21 +59,26 @@ public class MainActivity extends AppCompatActivity implements OutputInterface {
     protected void onCreate(Bundle savedInstanceState) {
         // required
         super.onCreate(savedInstanceState);
+
         // create a new 'Logic' instance.
         mLogic = new Logic(this);
+
         // setup the UI.
-        setupUI();
+        initializeUI();
     }
 
     /**
      * This method sets up/gets reference to the UI components
      */
-    private void setupUI(){
+    private void initializeUI(){
+        // Set the layout.
         setContentView(R.layout.activity_main);
-        outputET = (EditText) findViewById(R.id.outputET);
-        sizeET = (EditText) findViewById(R.id.editTextGroupSize);
-        countET = (EditText) findViewById(R.id.editTextCount);
-        processButton = (Button) findViewById(R.id.button);
+
+        // Initialize the views.
+        mOutput = (EditText) findViewById(R.id.outputET);
+        mSize = (EditText) findViewById(R.id.editTextGroupSize);
+        mCount = (EditText) findViewById(R.id.editTextCount);
+        mProcessButton = (Button) findViewById(R.id.button);
     }
 
     /**
@@ -61,14 +86,44 @@ public class MainActivity extends AppCompatActivity implements OutputInterface {
      *
      * @param buttonPress
      */
-    public void buttonPressed(View buttonPress)
-    {
+    public void buttonPressed(View buttonPress) {
         resetText();
         mLogic.process();
     }
 
-    private void addToEditText(String string){
-        outputET.setText("" + outputET.getText() + string);
+    /**
+     * Add @a string to the EditText.
+     */
+    private void addToEditText(String string) {
+        mOutput.setText("" + mOutput.getText() + string);
+    }
+
+    /**
+     * Get Size value from displayed UI.
+     */
+    public int getSize(){
+        int value = 0; 
+        final String strValue =
+            mSize.getText().toString();
+
+        if (strValue != null 
+            && !strValue.isEmpty())
+            value = Integer.valueOf(strValue);
+        return value;
+    }
+
+    /**
+     * Get Count value from displayed UI.
+     */
+    public int getCount(){
+        int value = 0; 
+        final String strValue = 
+            mCount.getText().toString();
+
+        if (strValue != null 
+            && !strValue.isEmpty())
+            value = Integer.valueOf(strValue);
+        return value;
     }
 
     /**
@@ -106,7 +161,7 @@ public class MainActivity extends AppCompatActivity implements OutputInterface {
      */
     @Override
     public void println(char _char) {
-        println("" + _char);
+		println("" + _char);
     }
 
     /**
@@ -114,7 +169,7 @@ public class MainActivity extends AppCompatActivity implements OutputInterface {
      */
     @Override
     public void resetText() {
-        outputET.setText("");
+        mOutput.setText("");
     }
 
     /**
@@ -132,20 +187,5 @@ public class MainActivity extends AppCompatActivity implements OutputInterface {
     public void makeAlertToast(String alertText) {
         Toast.makeText(this,alertText,Toast.LENGTH_LONG);
     }
-
-    /**
-     * Get Size value from displayed UI.
-     */
-    public int getSize(){
-        int value = Integer.valueOf( sizeET.getText().toString() );
-        return value;
-    }
-
-    /**
-     * Get Count value from displayed UI.
-     */
-    public int getCount(){
-        int value = Integer.valueOf( countET.getText().toString() );
-        return value;
-    }
 }
+

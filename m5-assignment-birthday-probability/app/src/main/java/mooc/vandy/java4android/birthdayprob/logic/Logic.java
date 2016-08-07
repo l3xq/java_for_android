@@ -1,23 +1,17 @@
 package mooc.vandy.java4android.birthdayprob.logic;
-/* Done by Dr. Strange else known as Imposer
- */
-import java.util.ArrayList;
-import java.util.HashMap;
+/* Created by aleks.ftn@gmail.com */
 import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
 import java.util.Random;
-import java.util.Set;
 
 import mooc.vandy.java4android.birthdayprob.ui.OutputInterface;
 
 /**
  * This is where the logic of this App is centralized for this assignment.
  * <p>
- * The assignments are designed this way to simplify your early
- * Android interactions.  Designing the assignments this way allows
- * you to first learn key 'Java' features without having to beforehand
- * learn the complexities of Android.
+ * The assignments are designed this way to simplify your early Android interactions.
+ * Designing the assignments this way allows you to first learn key 'Java' features without
+ * having to beforehand learn the complexities of Android.
+ *
  */
 public class Logic 
        implements LogicInterface {
@@ -29,21 +23,22 @@ public class Logic
         Logic.class.getName();
 
     /**
-    * This is the variable that stores our OutputInterface instance.
-    * <p>
-    * This is how we will interact with the User Interface [MainActivity.java].
-    * <p>
-    * It is called 'out' because it is where we 'out-put' our
-    * results. (It is also the 'in-put' from where we get values from,
-    * but it only needs 1 name, and 'out' is good enough)
+     * This is the variable that stores our OutputInterface instance.
+     * <p>
+     * This is how we will interact with the User Interface
+     * [MainActivity.java].
+     * <p>
+     * It is called 'mOut' because it is where we 'out-put' our
+     * results. (It is also the 'in-put' from where we get values
+     * from, but it only needs 1 name, and 'mOut' is good enough).
     */
-    private OutputInterface mOut;
+    OutputInterface mOut;
 
     /**
      * This is the constructor of this class.
      * <p>
-     * It assigns the passed in [MainActivity] instance (which
-     * implements [OutputInterface]) to 'out'.
+     * It assigns the passed in [MainActivity] instance
+     * (which implements [OutputInterface]) to 'out'
      */
     public Logic(OutputInterface out){
         mOut = out;
@@ -61,91 +56,60 @@ public class Logic
             mOut.makeAlertToast("Group Size must be in the range 2-365.");
             return;
         }
-
         if (simulationCount <= 0) {
             mOut.makeAlertToast("Simulation Count must be positive.");
             return;
         }
 
-        double percent = calculate(groupSize,
-                                   simulationCount);
+        double percent = calculate(groupSize, simulationCount);
 
         // report results
         mOut.println("For a group of " + groupSize + " people, the percentage");
         mOut.println("of times that two people share the same birthday is");
         mOut.println(String.format("%.2f%% of the time.", percent));
+
     }
 
     /**
      * This is the method that actually does the calculations.
      * <p>
-     * We provide you this method that way we can test it with unit
-     * testing.
+     * We provide you this method that way we can test it with unit testing.
      */
+    // I've completely changed assignment 5, and updated it to new version
+    // Excuse non-english commenting, it was aimed towards helping a friend
+    // Will remove them later down the road.
     public double calculate(int size, int count) {
         // TODO -- add your code here
-        int sucessSimsWithMinOnePair = 0;
+        int brojac = 0;
 
-        for(int i = 0; i < count; i++) {
-
-            List<Integer> simulation = bDaySimulationList(size, i);
-
-            boolean pairExists = checkingPairsInList(simulation);//simulation.size() < size;
-
-            if (pairExists)
-                sucessSimsWithMinOnePair++;
+        for (int i = 0; i < count; i++) {
+            if(jedinstvenaIzvrsena(size, i)){
+                brojac++;
+            }
         }
-        return (sucessSimsWithMinOnePair * 100.0)/count; // because percentage is required
+
+        return kojaJeVerovatnoca(brojac, count);
     }
 
-    // I used HashMap, because key value search is much faster, and checking simulation
-    //  for duplicate keys, if so return true
-    private boolean duplicatedKey(int size, int simulationCount) {
-        Random random = new Random(simulationCount);
+    // TODO -- add your code here
+    private static double kojaJeVerovatnoca(int brojac, int izvrsenja)     {
+        double verovatnoca = (double) brojac / (double) izvrsenja;
+        return verovatnoca*100;
+    }
 
-        Map<Integer,Integer> bDayHashMap = new HashMap<>(size); // TODO proveri alokaciju memorije
+    private static boolean jedinstvenaIzvrsena(int maliKauntic, int pokemonJaje) {
+        Random nasumicniGuzicar = new Random(pokemonJaje); // pokemonJaje ti je ustvari ona seed velicina
+        HashSet<Integer> rodjendanskiSetPokemona = new HashSet<Integer>(); // ako te ovo zbunjuje, reci da ti dam oficijalano objasnjenje
 
-        for (int i = 0; i < size; i++) {
-            int value = random.nextInt(365);
-            if(bDayHashMap.containsKey(value)) {
+        for (int i = 0; i < maliKauntic; i++) {
+            int brojBrojic = nasumicniGuzicar.nextInt(365); // stavio sam 365 jer je u tvom slucaju moglo od 0 do 364 <3
+
+            if (rodjendanskiSetPokemona.contains(brojBrojic)) {
                 return true;
             } else {
-                bDayHashMap.put(value, 1);
+                rodjendanskiSetPokemona.add(brojBrojic);
             }
         }
-
         return false;
-    }
-        //TODO predaj tek kad proveris Mapiranje LogCat-a
-    // List of items --> whole sim
-    private List<Integer> bDaySimulationList(int size, int simulationCount) {
-
-        Random random = new Random(simulationCount);
-
-        List<Integer> birthdayList = new ArrayList<>(size);
-
-        for (int i = 0; i < size; i++) {
-            birthdayList.add(i,random.nextInt(365));
-        }
-
-        return birthdayList;
-    }
-
-    public boolean checkingPairsInList(List<Integer> birthdayList) {
-        Set<Integer> birthdaySet = new HashSet<>(birthdayList);
-        return birthdaySet.size() < birthdayList.size();
-    }
-
-    public boolean checkSameBirthdayWithList(List<Integer> birthdays) {
-
-        boolean hasPair = false;
-        for (Integer birthday : birthdays) {
-            for (int i = (birthdays.indexOf(birthday) + 1); i < (birthdays.size()); i++) {
-                if (birthday.equals(birthdays.get(i)))
-                    hasPair = true;
-            }
-            if(hasPair) break;
-        }
-        return hasPair;
     }
 }

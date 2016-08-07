@@ -1,7 +1,13 @@
 package mooc.vandy.java4android.birthdayprob.logic;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.io.ByteArrayOutputStream;
+import java.io.FileDescriptor;
+import java.io.FileOutputStream;
+import java.io.PrintStream;
 
 import io.magnum.autograder.junit.Rubric;
 import mooc.vandy.java4android.birthdayprob.logic.tools.TestingOutputInterface;
@@ -22,37 +28,56 @@ public class LogicUnitTests {
 
     // Delta for boolean arithmetic accuracy.
     private static final double DELTA = 1e-15;
+    
+    
+    // Used to make sure "System.out" and "System.err" are NOT used in your assignments EVER!!
+    ByteArrayOutputStream myOut;
+    ByteArrayOutputStream myErr;
 
-    // This runs before each method with a '@Test' annotation.
-    //
-    // This entire class is re-created for each test method below. Therefore, 'setup'
-    // operations such as these that need to be ran 'before' each test are in this method.
+    /**
+     * This method runs before every test method and 'sets up' the testing environment.
+     * </p>
+     * This entire class is re-created for each test method below. Therefore, 'setup'
+     * operations such as these that need to be ran 'before' each test are in this method.
+    */
     @Before
-    public void setupClasses(){
+    public void setup(){
         output = new TestingOutputInterface();
         mLogic = new Logic(output);
+        
+        System.err.flush();
+        System.out.flush();
+        myOut = new ByteArrayOutputStream();
+        myErr = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(myOut));
+        System.setErr(new PrintStream(myErr));
     }
 
-    @Rubric(
-            value="testCalculateExact",
-            goal="The goal of this evaluation is to test Calculate with exact return values",
-            points=20.0,
-            reference="This Test fails when: calculate method failed to meet exact match."
-    )
-    @Test
-    public void testCalculateExact() {
-
-        assertEquals(2.71, mLogic.calculate(5, 10000), DELTA);
-        assertEquals(5.34, mLogic.calculate(7, 5000), DELTA);
-        assertEquals(0.27, mLogic.calculate(2, 10000), DELTA);
-        assertEquals(9.47, mLogic.calculate(9, 10000), DELTA);
-        assertEquals(70.675, mLogic.calculate(30, 20000), DELTA);
-        assertEquals(25.576, mLogic.calculate(15, 50000), DELTA);
-        assertEquals(81.434, mLogic.calculate(35, 50000), DELTA);
-        assertEquals(94.2, mLogic.calculate(45, 50000), DELTA);
-
+    /**
+     * This method runs after every test method and 'tears down' the testing environment.
+     */
+    @After
+    public void tearDown(){
+        final String standardOutput = myOut.toString();
+        final String standardError  = myErr.toString();
+        assertEquals("You used 'System.out' in your assignment, This is not allowed.",true, standardOutput.length() == 0);
+        assertEquals("You used 'System.err' in your assignment, This is not allowed.",true, standardError.length() == 0);
+        System.err.flush();
+        System.out.flush();
+        System.setOut(new PrintStream(new FileOutputStream(FileDescriptor.out)));
+        System.setErr(new PrintStream(new FileOutputStream(FileDescriptor.err)));
     }
 
+	/**
+	 * Note (Monte):
+	 * If students calculate percent using the formula
+	 *		(a / b) * 100
+	 * there rounding error will not produce an exact match
+	 * with the solution set which expects the formula to be
+	 *		(a * 100) / b
+	 * To work around this issue, Mike has added a tolerance
+	 * threshold.
+	 */
     @Rubric(
             value="testCalculateThreshold",
             goal="The goal of this evaluation is to test Calculate with return values within a threshold",
