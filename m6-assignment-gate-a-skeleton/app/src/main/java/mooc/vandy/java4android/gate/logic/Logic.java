@@ -43,14 +43,14 @@ public class Logic
      */
     @Override
     public void process() {
-        // Create a new Gate object.
+        // Instanciranje novog objekta Gejt
         final Gate gate = new Gate();
 
-        // Print the current state of the Gate object.
+        // Trenutni status
         mOut.println("Gate toString: " + gate.toString());
         mOut.println("Gate getSwingDirection: " + gate.getSwingDirection());
 
-        // Perform a number of operations on the Gate object.
+        // Sve operacije za gate obj
         gate.open(Gate.OUT);
         mOut.println("Gate toString: " + gate.toString());
         mOut.println("Gate getSwingDirection: " + gate.getSwingDirection());

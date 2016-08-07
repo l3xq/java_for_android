@@ -48,7 +48,7 @@ public class Logic
             case DIVIDE:
                 if(secondArgument == 0) {
                     mOut.createToast("No number can be divided by zero. Please provide a number other then zero in the second argument.");
-                    break;
+                    break; //bacam bre try-catch jer sam lud matematicar XD
                 }
 
                 operationOne = new Divide(firstArgument, secondArgument);

@@ -5,7 +5,6 @@ package mooc.vandy.java4android.buildings.logic;
  */
 public class Building {
 
-    //instance variables
     private int length;
     private int width;
     private int lotLength;

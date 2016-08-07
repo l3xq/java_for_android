@@ -47,13 +47,11 @@ public class MainActivity
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        // required
         super.onCreate(savedInstanceState);
 
-        // create a new 'Logic' instance.
         mLogic = new Logic(this);
 
-        // setup the UI.
+        // UIAAAAA
         initializeUI();
     }
 
@@ -61,10 +59,9 @@ public class MainActivity
      * This method sets up/gets reference to the UI components.
      */
     private void initializeUI(){
-        // Set the layout.
         setContentView(R.layout.activity_main);
 
-        // Initialize the views.
+        // Initialize the views
         mOutput = (EditText) findViewById(R.id.outputET);
         mProcessButton = (Button) findViewById(R.id.button);
     }

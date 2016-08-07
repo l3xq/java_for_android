@@ -8,7 +8,7 @@ public class Office extends Building {
     private String businessName;
     private int parkingSpaces;
 
-    //static variable to keep track of the number of unique instances created.
+    //pracenje broja jedinstvenih instanci koje su kreirane
     private static int totalOffices = 0;
 
     public Office(int length, int width, int lotLength, int lotWidth) {

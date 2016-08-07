@@ -5,8 +5,10 @@ public class House extends Building {
     private String owner;
     private boolean pool;
 
+    /* konstruktori, geteri, seteri i provere postojanja */
+
     public House(int length, int width, int lotLength, int lotWidth) {
-        //a call to the parent class constructor.
+        // pozivanje nasledjenih funkcija
         super(length, width, lotLength, lotWidth);
     }
 

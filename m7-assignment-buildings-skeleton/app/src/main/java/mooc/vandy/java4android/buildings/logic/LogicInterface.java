@@ -10,9 +10,6 @@ package mooc.vandy.java4android.buildings.logic;
  * [Logic.java] inside a 'LogicInterface' variable (mLogic inside [MainActivity.java])
  */
 public interface LogicInterface {
-    /*
-     * This method gets called (indirectly through [MainActivity.java])
-     * when the button labeled 'Process...' is pressed.
-     */
+
     public void process();
 }

@@ -4,6 +4,10 @@
         "source": "C:\\Users\\aleks\\Downloads\\java-for-android\\assignments\\m7-assignment-buildings-skeleton\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
     },
     {
+        "merged": "C:\\Users\\impz\\AndroidStudioProjects\\java_for_android\\m7-assignment-buildings-skeleton\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi-v4\\ic_launcher.png",
+        "source": "C:\\Users\\impz\\AndroidStudioProjects\\java_for_android\\m7-assignment-buildings-skeleton\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
+    },
+    {
         "merged": "C:\\Users\\aleks\\Downloads\\_62aad97bbb5d039d71e28be6eccd1667_m7-assignment-buildings-skeleton\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi-v4\\ic_launcher.png",
         "source": "C:\\Users\\aleks\\Downloads\\_62aad97bbb5d039d71e28be6eccd1667_m7-assignment-buildings-skeleton\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
     }
